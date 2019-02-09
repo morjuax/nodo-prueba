@@ -12,7 +12,8 @@
       <tr v-for="character in characters">
         <td>{{ character.name }}</td>
         <td>{{ character.house }}</td>
-        <td> <button @click="goToDetail(character._id)">Ver detalle</button> </td>
+        <td> <button class="btn btn-primary" @click="goToDetail(character._id)">
+          <i class="fa fa-eye" aria-hidden="true"></i> Ver detalle</button> </td>
       </tr>
     </table>
   </div>
@@ -20,7 +21,7 @@
 
 
 <script>
-  import { listsAllCharacters } from '../services/got.service.js'
+  import { listsAllCharacters, getACharacter } from '../services/got.service.js'
 
   export default {
     name: 'list-component',
@@ -39,11 +40,11 @@
      * @description the create function is the first one to be execute when the component is being created (see vue js lifecycle).
      */
     created () {
-      this.isLoading = true
+      this.isLoading = true;
       listsAllCharacters()
         .then(res => {
-          this.characters = res
-          this.isLoading = false
+          this.characters = res;
+          this.isLoading = false;
         })
     },
 
@@ -58,7 +59,7 @@
        * @method goToDetail
        */
       goToDetail(id) {
-        // CODE HERE
+        this.$router.push({name: 'detail', params: { id: id }});
       }
     }
   }

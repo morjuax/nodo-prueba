@@ -10,9 +10,9 @@ import routes from './routes'
 const router = new VueRouter({
   routes,
   mode: 'history'
-})
+});
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 /*
   vue installation.
@@ -22,4 +22,4 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router
-})
+});
